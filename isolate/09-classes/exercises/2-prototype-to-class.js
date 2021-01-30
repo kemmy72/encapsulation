@@ -6,13 +6,34 @@ const MaxMinPrototype = {
   },
   addNumber(newNum) {
     // ... code ...
-  },
+  }
 };
 
 // write the class
 //  hint: state ---> { min: 'number', max: 'number' }
 
-class MaxMin {}
+class MaxMin {
+  state = {
+  max: -Infinity,
+  min: Infinity,
+ };
+
+get spread() {
+ return this.state.max - this.state.min;
+}
+
+constructor() {}
+
+addNumber(num) {
+ // state.max and state.min are equal to num
+ if (num < this.state.min) {
+   this.state.min = num;
+ }
+ if (num > this.state.max) {
+   this.state.max = num;
+  }
+ }
+};
 
 // these two lines are correct! don't change them
 const instanceA = new MaxMin();
